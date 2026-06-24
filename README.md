@@ -6,6 +6,7 @@ $$
     \psi|_{\Gamma} = 0\\
 \end{dcases}
 $$
+
 Cartesian uniform grid, be careful
 
 P. S. The idea is good, but the tests are bad (
