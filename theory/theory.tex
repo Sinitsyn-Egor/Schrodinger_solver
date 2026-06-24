@@ -1,0 +1,90 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[english, russian]{babel}
+\usepackage{amssymb,amsfonts,amsmath,cite,enumerate,float,indentfirst, tikz}
+%\usepackage[dvips]{graphicx}
+\usepackage[dvipsnames, table]{xcolor}
+\usepackage{cancel}
+\usepackage{booktabs}
+%\]\left\{ \right.\] Может быть важно
+%\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath} % математический пакет
+\usepackage{mathtools}
+\usepackage{amssymb} % Еще 1 пакет для меньше равно и больше равно
+\usepackage{comment}
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=1cm,right=1cm,marginparwidth=1.75cm]{geometry}
+\usepackage{colortbl}
+%\usepackage[utf8]{inputenc}
+%\usepackage[T2A]{fontenc}
+
+\begin{document}
+\section{Problem statement}
+\[
+    \widehat{H}\psi = i \hbar \frac{\partial \psi}{\partial t}
+\]
+\[
+    -\frac{\hbar^2}{2m} \nabla^2\psi + U(\vec{r}, t) \psi = i \hbar \frac{\partial \psi}{\partial t}
+\]
+\[
+    \frac{i \hbar}{2m} \nabla^2\psi - \frac{i U(\vec{r}, t)}{\hbar} \psi = \frac{\partial \psi}{\partial t}
+\]
+\[
+    a \nabla^2\psi + \widetilde{U}(\vec{r}, t)\psi = \frac{\partial \psi}{\partial t}
+\]
+\[
+\begin{dcases}
+    \frac{\partial \psi}{\partial t} = a(\frac{d^2}{dx^2} + \frac{d^2}{dy^2} + \frac{d^2}{dz^2})\psi + \widetilde{U}(\vec{r}, t)\psi\\
+    \psi|_{\Gamma} = 0\\
+\end{dcases}
+\]
+\[ a = \frac{i \hbar}{2m} \quad \widetilde{U}(\vec{r}, t) = - \frac{i U(\vec{r}, t)}{\hbar}\]
+\section{Numerical scheme}
+\[
+\frac{\partial \psi}{\partial t} = a(\frac{d^2}{dx^2} + \frac{d^2}{dy^2} + \frac{d^2}{dz^2})\psi + \widetilde{U}(\vec{r}, t)\psi
+\quad\int\limits_{x_{i-\frac{1}{2}}}^{x_{i+\frac{1}{2}}}\int\limits_{y_{j-\frac{1}{2}}}^{y_{j+\frac{1}{2}}}\int\limits_{z_{k-\frac{1}{2}}}^{z_{k+\frac{1}{2}}} \cdot dx dy dz
+\]
+\[
+\int\limits_{x_{i-\frac{1}{2}}}^{x_{i+\frac{1}{2}}} f(x) dx = f_{i} h_{x}
+\]
+\[
+\begin{aligned}
+\frac{\partial \psi}{\partial t}\{i, j, k\}h_x h_y h_z = \\
+a \frac{\psi\{i+1, j, k\} - \psi\{i, j, k\}}{h_x}h_y h_z -&
+a \frac{\psi\{i, j, k\} - \psi\{i-1, j, k\}}{h_x}h_y h_z+\\
+a \frac{\psi\{i, j+1, k\} - \psi\{i, j, k\}}{h_y}h_x h_z -&
+a \frac{\psi\{i, j, k\} - \psi\{i, j-1, k\}}{h_y}h_x h_z+\\
+a \frac{\psi\{i, j, k+1\} - \psi\{i, j, k\}}{h_z}h_x h_y -&
+a \frac{\psi\{i, j, k\} - \psi\{i, j, k-1\}}{h_z}h_x h_y+\\
+\widehat{U}\{i, j, k\}(t) &h_x h_y h_z \psi\{i, j, k\}
+\end{aligned}
+\]
+\[
+\begin{aligned}
+\frac{\partial \psi}{\partial t}\{i, j, k\} =& \\
+\frac{a}{h_x^2}\psi\{i+1, j, k\} +& \frac{a}{h_x^2}\psi\{i-1, j, k\} + \\
+\frac{a}{h_y^2}\psi\{i, j+1, k\} +& \frac{a}{h_y^2}\psi\{i, j-1, k\} + \\
+\frac{a}{h_z^2}\psi\{i, j, k+1\} +& \frac{a}{h_z^2}\psi\{i, j, k-1\} + \\
+(\frac{2a}{h_x^2} + \frac{2a}{h_y^2} + \frac{2a}{h_z^2} +& \widehat{U}\{i, j, k\}(t))\psi\{i, j, k\}
+\end{aligned}
+\]
+
+
+\[
+\begin{dcases}
+    \frac{\partial \Psi}{\partial t} = A(t) \Psi\\
+    \Psi|_{t = 0} = \Psi_0
+\end{dcases}
+\]
+\[A(0)\Psi_0 = \lambda_0\Psi_0\]
+
+
+\[
+\frac{\Psi_{n+1} - \Psi_{n}}{\Delta t} = A_{n}\Psi_{n}
+\]
+\[
+\Psi_{n+1} = (A_{n}\Delta t + I)\Psi_{n}
+\]
+\[
+\Psi_{N} = \left(\prod_{n = 0}^{N-1} (A_{n}\Delta t + I)\right)\Psi_{0}
+\]
+ \end{document}
+
