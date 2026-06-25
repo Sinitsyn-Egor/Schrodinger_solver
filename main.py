@@ -32,7 +32,7 @@ def A(Ut: np.ndarray, h: tuple[float, float, float], a: float):
             for k in range(1, K - 1):
                 l = (i - 1) + (j - 1) * dj + (k - 1) * dk  # noqa: E741
 
-                A[l, l] = 2 * a / hx**2 + 2 * a / hy**2 + 2 * a / hz**2 + Ut[i, j, k]
+                A[l, l] = -2 * a / hx**2 - 2 * a / hy**2 - 2 * a / hz**2 + Ut[i, j, k]
 
                 if i != I - 2:
                     A[l, l + di] = a / hx**2
