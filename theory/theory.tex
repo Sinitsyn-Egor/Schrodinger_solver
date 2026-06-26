@@ -54,7 +54,7 @@ a \frac{\psi\{i, j+1, k\} - \psi\{i, j, k\}}{h_y}h_x h_z -&
 a \frac{\psi\{i, j, k\} - \psi\{i, j-1, k\}}{h_y}h_x h_z+\\
 a \frac{\psi\{i, j, k+1\} - \psi\{i, j, k\}}{h_z}h_x h_y -&
 a \frac{\psi\{i, j, k\} - \psi\{i, j, k-1\}}{h_z}h_x h_y+\\
-\widehat{U}\{i, j, k\}(t) &h_x h_y h_z \psi\{i, j, k\}
+\widetilde{U}\{i, j, k\}(t) &h_x h_y h_z \psi\{i, j, k\}
 \end{aligned}
 \]
 \[
@@ -63,7 +63,7 @@ a \frac{\psi\{i, j, k\} - \psi\{i, j, k-1\}}{h_z}h_x h_y+\\
 \frac{a}{h_x^2}\psi\{i+1, j, k\} +& \frac{a}{h_x^2}\psi\{i-1, j, k\} + \\
 \frac{a}{h_y^2}\psi\{i, j+1, k\} +& \frac{a}{h_y^2}\psi\{i, j-1, k\} + \\
 \frac{a}{h_z^2}\psi\{i, j, k+1\} +& \frac{a}{h_z^2}\psi\{i, j, k-1\} + \\
-(-\frac{2a}{h_x^2} - \frac{2a}{h_y^2} - \frac{2a}{h_z^2} +& \widehat{U}\{i, j, k\}(t))\psi\{i, j, k\}
+(-\frac{2a}{h_x^2} - \frac{2a}{h_y^2} - \frac{2a}{h_z^2} +& \widetilde{U}\{i, j, k\}(t))\psi\{i, j, k\}
 \end{aligned}
 \]
 
@@ -71,7 +71,7 @@ a \frac{\psi\{i, j, k\} - \psi\{i, j, k-1\}}{h_z}h_x h_y+\\
 \[
 \begin{dcases}
     \frac{\partial \Psi}{\partial t} = A(t) \Psi\\
-    \Psi|_{t = 0} = \Psi_0
+    \Psi|_{t = 0} = \Psi_{0}
 \end{dcases}
 \]
 \[A(0)\Psi_0 = \lambda_0\Psi_0\]
@@ -86,5 +86,21 @@ a \frac{\psi\{i, j, k\} - \psi\{i, j, k-1\}}{h_z}h_x h_y+\\
 \[
 \Psi_{N} = \left(\prod_{n = 0}^{N-1} (A_{n}\Delta t + I)\right)\Psi_{0}
 \]
+% \section{Modification}
+% \[A(t) = A + \widehat{U}(t)\]
+% \[\Psi = \Psi_{A} + \Psi_{U}\]
+% \[
+% \begin{dcases}
+%     \frac{\partial \Psi}{\partial t} = A(t) \Psi\\
+%     \Psi|_{t = 0} = \Psi_0
+% \end{dcases}
+% \]
+% \[\Psi_{A} = e^{At} \Psi_{0}\]
+% \[
+% \begin{dcases}
+%     \frac{\partial \Psi_{U}}{\partial t} = U e^{At} \Psi_{0} + (A + U) \Psi_{U}\\
+%     \Psi_{U}|_{t = 0} = 0
+% \end{dcases}
+% \]
  \end{document}
 
